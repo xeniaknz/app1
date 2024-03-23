@@ -65,7 +65,7 @@ with col2:
     ('Unemployed', 'Student', 'Parental leave', 'Specialist', 'Middle manager', 'Top manager', 'CEO'))
 
 with col3:
-option_activity = st.selectbox(
+ option_activity = st.selectbox(
      'Customers activity', 
     ('Active', 'Inactive', 'Blocked'))     
 
