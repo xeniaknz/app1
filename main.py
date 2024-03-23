@@ -79,7 +79,9 @@ if len(content_input.split(" ")) > 700:
     st.write("Please enter a shorter content. The maximum length is 700 words.")
     st.stop()
 
-
+def update_text_with_example():
+    print ("in updated")
+    st.session_state.content_input = "everyday banking, MasterCard, European payments, Instant payments, child account"
 
 st.button("*GENERATE TEXT*", type='secondary', help="Click to see an example of the content you will be converting.", on_click=update_text_with_example)
 
