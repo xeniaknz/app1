@@ -58,13 +58,14 @@ with col1:
     option_agegroup = st.selectbox(
         'Which age group would you like your content to target?',
         ('18-29', '30-39', '40-49', '50-59', '60-99'))
+ 
 with col2:
  option_occupation = st.selectbox(
      'Customers main occupation', 
     ('Unemployed', 'Student', 'Parental leave', 'Specialist', 'Middle manager', 'Top manager', 'CEO'))
 
 with col3:
-option_acivity = st.selectbox(
+option_activity = st.selectbox(
      'Customers activity', 
     ('Active', 'Inactive', 'Blocked'))     
 
