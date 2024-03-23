@@ -58,16 +58,23 @@ with col1:
     option_agegroup = st.selectbox(
         'Which age group would you like your content to target?',
         ('18-29', '30-39', '40-49', '50-59', '60-99'))
-    
+with col2:
+ option_occupation = get_occupation()
+
+with col3:
+ option_acitivity = get_activity()
+
 def get_occupation():
     option_occupation = st.selectbox(
      'Customers main occupation', 
     ('Unemployed', 'Student', 'Parental leave', 'Specialist', 'Middle manager', 'Top manager', 'CEO'))
+ return option_occupation
 
 def get_activity():
     option_occupation = st.selectbox(
      'Customers activity', 
     ('Active', 'Inactive', 'Blocked'))  
+ return option_activity
 
 def get_text():
     input_text = st.text_area(label="Content Input", label_visibility='collapsed', placeholder="Your content...", key="content_input")
