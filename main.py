@@ -12,8 +12,8 @@ template = """
     CUSTOMER activity: {activity};
     TASK: Write a product description that is tailored into this customer's Age group, Occupation and activity. Use age group specific slang.;
     FORMAT: Present the result in the following order: (PRODUCT DESCRIPTION), (BENEFITS), (USE CASE);
-    PRODUCT DESCRIPTION: describe the product in 5 sentences;
-    BENEFITS: describe in 3 sentences why this product is perfect considering customers age group, occupation and activity;
+    PRODUCT DESCRIPTION: describe the product in 3 sentences;
+    BENEFITS: describe in 2 sentences why this product is perfect considering customers age group, occupation and activity;
     USE CASE: write a story in 5 sentences, of an example weekend activity taking into account occupation {occupation}, activity {activity} and age {agegroup}, write a story in first person, example "I started my Saturday morning with ...";
 """
 
