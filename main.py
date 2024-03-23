@@ -8,16 +8,17 @@ template = """
  You are a marketing copywriter with 20 years of experience. You are analyzing customer's background to write personalized product description that only this customer will receive; 
     PRODUCT input text: {content};
     CUSTOMER age group (y): {agegroup};
-    CUSTOMER main Hobby: {hobby};
-    TASK: Write a product description that is tailored into this customer's Age group and hobby. Use age group specific slang.;
+    CUSTOMER main Occupation: {occupation};
+    CUSTOMER activity: {activity};
+    TASK: Write a product description that is tailored into this customer's Age group, Occupation and activity. Use age group specific slang.;
     FORMAT: Present the result in the following order: (PRODUCT DESCRIPTION), (BENEFITS), (USE CASE);
     PRODUCT DESCRIPTION: describe the product in 5 sentences;
-    BENEFITS: describe in 3 sentences why this product is perfect considering customers age group and hobby;
-    USE CASE: write a story in 5 sentences, of an example weekend activity taking into account hobby {hobby} and age {agegroup}, write a story in first person, example "I started my Saturday morning with ...";
+    BENEFITS: describe in 3 sentences why this product is perfect considering customers age group, occupation and activity;
+    USE CASE: write a story in 5 sentences, of an example weekend activity taking into account occupation {occupation}, activity {activity} and age {agegroup}, write a story in first person, example "I started my Saturday morning with ...";
 """
 
 prompt = PromptTemplate(
-    input_variables=["agegroup", "hobby", "content"],
+    input_variables=["agegroup", "occupation", "activity", "content"],
     template=template,
 )
 
@@ -52,17 +53,21 @@ def get_api_key():
 
 openai_api_key = get_api_key()
 
-col1, col2 = st.columns(2)
+col1, col2, col3 = st.columns(3)
 with col1:
     option_agegroup = st.selectbox(
         'Which age group would you like your content to target?',
-        ('9-15', '16-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80-100'))
+        ('18-29', '30-39', '40-49', '50-59', '60-99'))
     
-def get_hobby():
-    input_text = st.text_input(label="Customers main hobby", key="hobby_input")
-    return input_text
+def get_occupation():
+    option_occupation = st.selectbox(
+     'Customers main occupation', 
+    ('Unemployed', 'Student', 'Parental leave', 'Specialist', 'Middle manager', 'Top manager', 'CEO'))
 
-hobby_input = get_hobby()
+def get_activity():
+    option_occupation = st.selectbox(
+     'Customers activity', 
+    ('Active', 'Inactive', 'Blocked'))  
 
 def get_text():
     input_text = st.text_area(label="Content Input", label_visibility='collapsed', placeholder="Your content...", key="content_input")
@@ -89,7 +94,7 @@ if content_input:
 
     llm = load_LLM(openai_api_key=openai_api_key)
 
-    prompt_with_content = prompt.format(agegroup=option_agegroup, hobby=hobby_input, content=content_input)
+    prompt_with_content = prompt.format(agegroup=option_agegroup, occupation=option_occupation, activity=option_activity, content=content_input)
 
     formatted_content = llm(prompt_with_content)
 
