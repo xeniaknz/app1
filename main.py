@@ -71,7 +71,7 @@ def get_occupation():
  return option_occupation
 
 def get_activity():
-    option_occupation = st.selectbox(
+    option_acivity = st.selectbox(
      'Customers activity', 
     ('Active', 'Inactive', 'Blocked'))  
  return option_activity
